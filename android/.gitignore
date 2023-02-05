@@ -12,3 +12,4 @@ key.properties
 **/*.keystore
 **/*.jks
 app/kim-vinod-upload-keystore.jks
+app/google-services.json
