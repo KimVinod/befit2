@@ -13,3 +13,4 @@ key.properties
 **/*.jks
 app/kim-vinod-upload-keystore.jks
 app/google-services.json
+/lib/firebase_options.dart
