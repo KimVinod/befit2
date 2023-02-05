@@ -1,2 +1,2 @@
-# befit_v2
+# BeFit 2
  Track and maintain your fitness life easily.
