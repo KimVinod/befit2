@@ -26,7 +26,7 @@ class WaterReminder {
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-        ?.periodicallyShow(0, "Reminder to drink water", "Stay hydrated! Don't forget to sip on some H2O 💧", RepeatInterval.hourly, notificationDetails: androidNotificationDetails, androidAllowWhileIdle: true);
+        ?.periodicallyShow(0, "Reminder to drink water", "Stay hydrated! Don't forget to sip on some H2O 💧", RepeatInterval.hourly, notificationDetails: androidNotificationDetails);
   }
 
   static Future cancel() async {

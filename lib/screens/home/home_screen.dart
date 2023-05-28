@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:animated_digit/animated_digit.dart';
 import 'package:befit_v2/data/meal_data.dart';
 import 'package:befit_v2/data/meal_model.dart';
+import 'package:befit_v2/screens/home/workout/workout_screen.dart';
 import 'package:befit_v2/screens/profile/profile_screen.dart';
 import 'package:befit_v2/services/water_reminder.dart';
 import 'package:befit_v2/utils/constants.dart';
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
   final _caloriesKey = GlobalKey();
   final _bmiKey = GlobalKey();
   final _scoreKey = GlobalKey();
-  final _addKey = GlobalKey();
+  final _workoutKey = GlobalKey();
   final _profileKey = GlobalKey();
 
   Future loadData() async {
@@ -269,6 +270,73 @@ class _HomeState extends State<Home> {
                                     ] else... [
                                       const Text("Keep on going ♡", style: TextStyle(fontSize: 16, color: appUIDarkBlueColor),),
                                     ],
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Showcase(
+                            key: _workoutKey,
+                            descriptionAlignment: TextAlign.center,
+                            description: 'workout',
+                            child: GestureDetector(
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Workout())),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                                decoration: BoxDecoration(
+                                  color: appUILLightGreenColor.withOpacity(0.65),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Workout", style: TextStyle(fontSize: 18, color: Colors.teal.shade900),),
+                                        Icon(FontAwesomeIcons.dumbbell, size: 17, color: Colors.teal.shade900,),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 25),
+                                    Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        SizedBox(
+                                          height: 100,
+                                          width: 100,
+                                          child: TweenAnimationBuilder(
+                                              tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
+                                              duration: const Duration(seconds: 2),
+                                              builder: (context, value, _) {
+                                                return CircularProgressIndicator(
+                                                  value: value.toDouble(),
+                                                  color: Colors.teal.shade900,
+                                                  strokeWidth: 3,
+                                                  backgroundColor: Colors.teal.shade900.withOpacity(0.2),
+                                                );
+                                              }
+                                          ),
+                                        ),
+                                        Column(
+                                          children: [
+                                            Countup(
+                                              begin: 0,
+                                              end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toDouble(),
+                                              duration: const Duration(seconds: 2),
+                                              style: TextStyle(
+                                                fontSize: 32,
+                                                color: Colors.teal.shade900,
+                                              ),
+                                            )
+                                            /*AnimatedDigitWidget(
+                                                controller: scoreController,
+                                                  duration: Duration(seconds: 2),
+                                                  value: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000),
+                                              ),*/
+                                            //Text(calcexitulateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toString(), style: TextStyle(fontSize: 32, color: appUIDarkPurpleColor),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
