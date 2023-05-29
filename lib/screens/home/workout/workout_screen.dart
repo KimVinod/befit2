@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'beginner/workout_beginner_screen.dart';
+
 
 class Workout extends StatelessWidget {
   const Workout({Key? key}) : super(key: key);
@@ -57,21 +59,24 @@ class Workout extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFFffeeb6).withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child:  Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Beginner", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                              Text("Weeks: 4", style: TextStyle(fontSize: 13),),
-                              Spacer(),
-                              Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/beginner.png", height: 100,))
-                            ],
+                      GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginner())),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFffeeb6).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child:  Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Beginner", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                Text("Weeks: 4", style: TextStyle(fontSize: 13),),
+                                Spacer(),
+                                Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/beginner.png", height: 100,))
+                              ],
+                            ),
                           ),
                         ),
                       ),
