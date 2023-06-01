@@ -129,7 +129,7 @@ class _ProfileState extends State<Profile> {
     setState(() {
       if(pick != null) {
         _image = File(pick.path);
-        print("VINOD: ${pick.path}");
+        //print("VINOD: ${pick.path}");
       } else {
         UIComponents.showSnackBar(context, "No file selected", const Duration(seconds: 2));
       }
@@ -141,7 +141,7 @@ class _ProfileState extends State<Profile> {
     setState(() {
       if(pick != null) {
         _image = File(pick.path);
-        print("VINOD: ${pick.path}");
+        //print("VINOD: ${pick.path}");
       } else {
         UIComponents.showSnackBar(context, "No file selected", const Duration(seconds: 2));
       }

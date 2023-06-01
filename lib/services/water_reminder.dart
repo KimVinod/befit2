@@ -3,12 +3,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class WaterReminder {
   static Future remindHourly() async {
 
-    /*List<String> notfsBody = [
-      "Don't forget to sip on some H2O 💧",
-      "Stay hydrated! Drink a glass of water 💧",
-    ];
-    notfsBody.shuffle();*/
-
     const AndroidNotificationDetails androidNotificationDetails =
     AndroidNotificationDetails(
         'high_importance_channel_2', 'BeFit Water Notification Channel',
@@ -26,7 +20,7 @@ class WaterReminder {
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-        ?.periodicallyShow(0, "Reminder to drink water", "Stay hydrated! Don't forget to sip on some H2O 💧", RepeatInterval.hourly, notificationDetails: androidNotificationDetails, androidAllowWhileIdle: true);
+        ?.periodicallyShow(0, "Reminder to drink water", "Stay hydrated! Don't forget to sip on some H2O 💧", RepeatInterval.hourly, notificationDetails: androidNotificationDetails);
   }
 
   static Future cancel() async {

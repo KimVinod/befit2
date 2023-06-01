@@ -11,3 +11,8 @@ const Color appUIBrownColor = Color(0xFF5C1D00);
 const Color appUILightBrownColor = Color(0xFFFFEFD2);
 const Color appUILavenderColor = Color(0xFFE1DCF2);
 const Color appUIDarkPurpleColor = Color(0xFF301934);
+const Color appUILLightGreenColor = Color(0xFFC6F8E5);
+
+const List<Color> colorList = [
+  Color(0xffedfdf2), Color(0xfffcecec), Color(0xffedf6fd), Color(0xfffdf5ed), Color(0xffedfdf2), Color(0xfffcecec), Color(0xffedf6fd), Color(0xfffdf5ed), Color(0xffedfdf2), Color(0xfffcecec),
+];

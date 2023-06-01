@@ -7,12 +7,12 @@ class UIComponents {
   }
 
   static void showLoading(BuildContext context) {
-    ScaffoldMessenger.of(context)..removeCurrentSnackBar()..showSnackBar(SnackBar(backgroundColor: appUIPrimaryColor, content: Row(
+    ScaffoldMessenger.of(context)..removeCurrentSnackBar()..showSnackBar(const SnackBar(backgroundColor: appUIPrimaryColor, content: Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         CircularProgressIndicator(color: Colors.white),
       ],
-    ), behavior: SnackBarBehavior.floating, duration: const Duration(days: 1),));
+    ), behavior: SnackBarBehavior.floating, duration: Duration(days: 1),));
   }
 
   static void removeSnackBar(BuildContext context) {
