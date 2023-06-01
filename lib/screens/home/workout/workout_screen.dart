@@ -40,15 +40,15 @@ class Workout extends StatelessWidget {
               Expanded(
                 child: Center(
                   child: GridView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 0.7, crossAxisCount: 2, crossAxisSpacing: 15, mainAxisSpacing: 15),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 0.7, crossAxisCount: 2, crossAxisSpacing: 15, mainAxisSpacing: 15),
                     children: [
                       GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutTips())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutTips())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFfedffc).withOpacity(0.7),
+                            color: const Color(0xFFfedffc).withOpacity(0.7),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -56,8 +56,8 @@ class Workout extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Workout\nTips", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                Spacer(),
+                                const Text("Workout\nTips", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                const Spacer(),
                                 Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/daily-health.png", height: 100,))
                               ],
                             ),
@@ -65,10 +65,10 @@ class Workout extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginner())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutBeginner())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFffeeb6).withOpacity(0.5),
+                            color: const Color(0xFFffeeb6).withOpacity(0.5),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -76,10 +76,10 @@ class Workout extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Beginner", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                Text("Weeks: 4", style: TextStyle(fontSize: 13),),
-                                Text("15 min/day", style: TextStyle(fontSize: 13),),
-                                Spacer(),
+                                const Text("Beginner", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                const Text("Weeks: 4", style: TextStyle(fontSize: 13),),
+                                const Text("15 min/day", style: TextStyle(fontSize: 13),),
+                                const Spacer(),
                                 Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/beginner.png", height: 100,))
                               ],
                             ),
@@ -87,10 +87,10 @@ class Workout extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutIntermediate())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutIntermediate())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFb5ffe5).withOpacity(0.55),
+                            color: const Color(0xFFb5ffe5).withOpacity(0.55),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -98,10 +98,10 @@ class Workout extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Intermediate", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                Text("Weeks: 8", style: TextStyle(fontSize: 13),),
-                                Text("45 min/day", style: TextStyle(fontSize: 13),),
-                                Spacer(),
+                                const Text("Intermediate", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                const Text("Weeks: 8", style: TextStyle(fontSize: 13),),
+                                const Text("45 min/day", style: TextStyle(fontSize: 13),),
+                                const Spacer(),
                                 Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/intermediate.png", height: 100,))
                               ],
                             ),
@@ -109,10 +109,10 @@ class Workout extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutExtreme())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutExtreme())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFd1d4f3).withOpacity(0.55),
+                            color: const Color(0xFFd1d4f3).withOpacity(0.55),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -120,10 +120,10 @@ class Workout extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Extreme", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                Text("Weeks: 10", style: TextStyle(fontSize: 13),),
-                                Text("90 min/day", style: TextStyle(fontSize: 13),),
-                                Spacer(),
+                                const Text("Extreme", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                const Text("Weeks: 10", style: TextStyle(fontSize: 13),),
+                                const Text("90 min/day", style: TextStyle(fontSize: 13),),
+                                const Spacer(),
                                 Align(alignment: Alignment.bottomRight,child: Image.asset("assets/images/extreme.png", height: 100,))
                               ],
                             ),

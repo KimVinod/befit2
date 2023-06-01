@@ -28,26 +28,26 @@ class WorkoutTips extends StatelessWidget {
                       onTap: () => Navigator.pop(context),
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       "Workout Tips",
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Expanded(
                   child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     itemCount: workoutTips.length,
                     itemBuilder: (context, index) => Container(
                       height: 180,
                       width: double.infinity,
-                      margin: EdgeInsets.only(bottom: 20),
-                      padding: EdgeInsets.all(12),
+                      margin: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: colorList[index],
@@ -55,10 +55,10 @@ class WorkoutTips extends StatelessWidget {
                       child: Column(
                         //crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(workoutTips[index].name, textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                          Spacer(),
+                          Text(workoutTips[index].name, textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          const Spacer(),
                           Text(workoutTips[index].tips, textAlign: TextAlign.center),
-                          Spacer(),
+                          const Spacer(),
                         ],
                       ),
                     ),

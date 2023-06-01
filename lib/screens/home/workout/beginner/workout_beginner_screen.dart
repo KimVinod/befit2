@@ -26,12 +26,6 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
         separatedWorkouts[day] = [workout];
       }
     }
-
-    /*separatedWorkouts.forEach((day, workouts) {
-      print('Day $day:');
-      workouts.forEach((workout) => print('${workout.name} - ${workout.gif}'));
-      print('');
-    });*/
   }
 
   @override
@@ -73,7 +67,7 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Material(
                   child: TabBar(
                     indicatorColor: Colors.green,
@@ -101,324 +95,6 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
                       buildWeekListView(separatedWorkouts, 2),
                       buildWeekListView(separatedWorkouts, 3),
                       buildWeekListView(separatedWorkouts, 4),
-                      /*ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        itemCount:  separatedWorkouts.length,
-                        itemBuilder: (context, index) {
-                          int day = separatedWorkouts.keys.elementAt(index);
-                          List<Workout> workouts = separatedWorkouts[day]!;
-                          if(workouts.any((e) => e.isRelax)) {
-                            return Container(
-                              height: 200,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 20),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: colorList[index],
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Day $day", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                  Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
-                                ],
-                              ),
-                            );
-                          }else {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workouts, day: day)));
-                              },
-                              child: Container(
-                                height: 200,
-                                width: double.infinity,
-                                margin: EdgeInsets.only(bottom: 20),
-                                padding: EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: colorList[index],
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("Day ${index+1}", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                    Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("7 min")),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                      ListView(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              List<Workout> workoutPlans = week1.where((e) => e.isRelax == false && e.day == 1).toList();
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workoutPlans, day: 1)));
-                            },
-                            child: Container(
-                              height: 200,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 20),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Color(0xffedfdf2),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Day 1", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                  Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("7 min")),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xfffcecec),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Day 2", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                Chip(backgroundColor: Colors.pink.shade100, avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
-                              ],
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              List<Workout> workoutPlans = week1.where((e) => e.isRelax == false && e.day == 3).toList();
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workoutPlans, day: 3)));
-                            },
-                            child: Container(
-                              height: 200,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 20),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Color(0xffedf6fd),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Day 3", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                  Chip(backgroundColor: Colors.blue.shade100, avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("12 min")),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xfffdf5ed),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Day 4", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                Chip(backgroundColor: Color(0xffffd4ae), avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xffedfdf2),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Day 5", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
-                              ],
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              List<Workout> workoutPlans = week1.where((e) => e.isRelax == false && e.day == 6).toList();
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workoutPlans, day: 6)));
-                            },
-                            child: Container(
-                              height: 200,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 20),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Color(0xfffcecec),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Day 6", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                  Chip(backgroundColor: Colors.pink.shade100, avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("7 min")),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xffedf6fd),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Day 7", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                Chip(backgroundColor: Colors.blue.shade100, avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      ListView(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        children: [
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xffedfdf2),
-                            ),
-                            child: Stack(
-                              children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Knee\nPush-ups", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                    Spacer(),
-                                    Row(
-                                      children: [
-                                        Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                        SizedBox(width: 10),
-                                        Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("5x")),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Positioned.fill(
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Gif(
-                                      height: 90,
-                                      autostart: Autostart.loop,
-                                      duration: Duration(milliseconds: 1700),
-                                      placeholder: (context) =>
-                                      const Center(child: CircularProgressIndicator()),
-                                      image: const AssetImage('assets/images/knee-pushups.gif'),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xfffcecec),
-                            ),
-                            child: Stack(
-                              children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Forward\nLunges", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                    Spacer(),
-                                    Row(
-                                      children: [
-                                        Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                        SizedBox(width: 10),
-                                        Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("5x")),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Positioned.fill(
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Gif(
-                                      //height: 90,
-                                      autostart: Autostart.loop,
-                                      duration: Duration(milliseconds: 4000),
-                                      placeholder: (context) =>
-                                      const Center(child: CircularProgressIndicator()),
-                                      image: const AssetImage('assets/images/forward-lunges.gif'),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 20),
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0xffedf6fd),
-                            ),
-                            child: Stack(
-                              children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Mountain\nClimbers", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                    Spacer(),
-                                    Row(
-                                      children: [
-                                        Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                        SizedBox(width: 10),
-                                        Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("5x")),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Positioned.fill(
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Image.asset('assets/images/mountain-climbers.gif', width: 120,),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(),
-                      Container(),*/
                     ],
                   ),
                 )
@@ -437,8 +113,8 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
     int endIndex = startIndex + daysPerWeek - 1;
 
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(vertical: 15),
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       itemCount: endIndex - startIndex + 1,
       itemBuilder: (context, index) {
         int day = startIndex + index;
@@ -447,8 +123,8 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
           return Container(
             height: 200,
             width: double.infinity,
-            margin: EdgeInsets.only(bottom: 20),
-            padding: EdgeInsets.all(12),
+            margin: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: colorList[index],
@@ -456,8 +132,8 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Day $day", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.bed, size: 16,), label: Text("Relax Day")),
+                Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.bed, size: 16,), label: const Text("Relax Day")),
               ],
             ),
           );
@@ -469,8 +145,8 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
             child: Container(
               height: 200,
               width: double.infinity,
-              margin: EdgeInsets.only(bottom: 20),
-              padding: EdgeInsets.all(12),
+              margin: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: colorList[index],
@@ -478,8 +154,8 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Day $day", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                  Chip(backgroundColor: Colors.green.shade200, avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
+                  Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                  Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
                 ],
               ),
             ),

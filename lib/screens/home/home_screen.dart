@@ -83,11 +83,11 @@ class _HomeState extends State<Home> {
   void showShowCaseView() {
     ShowCaseWidget.of(showCaseContext!).startShowCase([
       _welcomeKey,
+      _workoutKey,
       _waterKey,
       _caloriesKey,
       _bmiKey,
       _scoreKey,
-      //_addKey,
       _profileKey,
     ]);
     appUserSettingsBox.put("isFirstRun", false);
@@ -234,9 +234,9 @@ class _HomeState extends State<Home> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text("Water", style: TextStyle(fontSize: 18, color: appUIDarkBlueColor),),
                                         Icon(Icons.water_drop_outlined, size: 22, color: appUIDarkBlueColor,),
                                       ],
@@ -278,9 +278,9 @@ class _HomeState extends State<Home> {
                           Showcase(
                             key: _workoutKey,
                             descriptionAlignment: TextAlign.center,
-                            description: 'workout',
+                            description: 'Workout plans are shown here!',
                             child: GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Workout())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Workout())),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
                                 decoration: BoxDecoration(
@@ -296,7 +296,7 @@ class _HomeState extends State<Home> {
                                         Icon(FontAwesomeIcons.dumbbell, size: 17, color: Colors.teal.shade900,),
                                       ],
                                     ),
-                                    SizedBox(height: 25),
+                                    const SizedBox(height: 25),
                                     Container(
                                       height: 100,
                                       decoration: BoxDecoration(
@@ -325,9 +325,9 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Column(
                                   children: [
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text("Calories", style: TextStyle(fontSize: 18, color: appUISecondaryColor),),
                                         Icon(Icons.fastfood_outlined, size: 18, color: appUISecondaryColor,),
                                       ],
@@ -380,9 +380,9 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text("BMI", style: TextStyle(fontSize: 18, color: appUIBrownColor),),
                                         Icon(FontAwesomeIcons.childReaching, size: 20, color: appUIBrownColor,),
                                       ],
@@ -429,9 +429,9 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Column(
                                   children: [
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text("Score", style: TextStyle(fontSize: 18, color: appUIDarkPurpleColor),),
                                         Icon(Icons.scoreboard_outlined, size: 19, color: appUIDarkPurpleColor,),
                                       ],
@@ -563,9 +563,9 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text("Your Water Intake", style: TextStyle(fontSize: 20, color: appUIDarkBlueColor),),
                   Icon(Icons.water_drop_outlined, size: 24, color: appUIDarkBlueColor,),
                 ],
@@ -622,9 +622,9 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text("Your Calorie Intake", style: TextStyle(fontSize: 20, color: appUISecondaryColor),),
                   Icon(Icons.fastfood_outlined, size: 22, color: appUISecondaryColor,),
                 ],
@@ -679,9 +679,9 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text("Your Score", style: TextStyle(fontSize: 20, color: appUIDarkPurpleColor),),
                   Icon(Icons.scoreboard_outlined, size: 24, color: appUIDarkPurpleColor,),
                 ],
@@ -762,9 +762,9 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text("Your BMI", style: TextStyle(fontSize: 20, color: appUIBrownColor),),
                   Icon(FontAwesomeIcons.childReaching, size: 24, color: appUIBrownColor,),
                 ],
@@ -848,8 +848,8 @@ class _HomeState extends State<Home> {
                                 width: 80,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.glassWater, color: appUIDarkBlueColor,),
                                     SizedBox(height: 4),
                                     Text("Water", style: TextStyle(color: appUIDarkBlueColor),),
@@ -874,8 +874,8 @@ class _HomeState extends State<Home> {
                                 width: 80,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.wineGlass, color: appUIPrimaryColor,),
                                     SizedBox(height: 4),
                                     Text("Coke", style: TextStyle(color: appUIPrimaryColor),),
@@ -900,8 +900,8 @@ class _HomeState extends State<Home> {
                                 width: 80,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.mugHot, color: appUIBrownColor,),
                                     SizedBox(height: 4),
                                     Text("Coffee", style: TextStyle(color: appUIBrownColor),),
@@ -926,8 +926,8 @@ class _HomeState extends State<Home> {
                                 width: 80,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.martiniGlass, color: appUIDarkPurpleColor,),
                                     SizedBox(height: 4),
                                     Text("Liquor", style: TextStyle(color: appUIDarkPurpleColor),),
@@ -1310,8 +1310,8 @@ class _HomeState extends State<Home> {
                                 width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.bellSlash, color: appUIDarkBlueColor, size: 22,),
                                     SizedBox(height: 12),
                                     Text("Disable", style: TextStyle(color: appUIDarkBlueColor),),
@@ -1335,8 +1335,8 @@ class _HomeState extends State<Home> {
                                 width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.bell, color: appUIDarkBlueColor, size: 22,),
                                     SizedBox(height: 12),
                                     Text("1 hr", style: TextStyle(color: appUIDarkBlueColor),),
@@ -1411,8 +1411,8 @@ class _HomeState extends State<Home> {
                                 width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.bellSlash, color: appUIDarkBlueColor, size: 22,),
                                     SizedBox(height: 12),
                                     Text("Disable", style: TextStyle(color: appUIDarkBlueColor),),
@@ -1436,8 +1436,8 @@ class _HomeState extends State<Home> {
                                 width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
-                                child: Column(
-                                  children: const [
+                                child: const Column(
+                                  children: [
                                     Icon(FontAwesomeIcons.bell, color: appUIDarkBlueColor, size: 22,),
                                     SizedBox(height: 12),
                                     Text("1 hr", style: TextStyle(color: appUIDarkBlueColor),),

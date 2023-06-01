@@ -41,17 +41,17 @@ class WorkoutBeginnerDay extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Expanded(
                   child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     itemCount: workoutPlans.length,
                     itemBuilder: (context, index) => Container(
                       height: 200,
                       width: double.infinity,
-                      margin: EdgeInsets.only(bottom: 20),
-                      padding: EdgeInsets.all(12),
+                      margin: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: colorList[index],
@@ -61,13 +61,13 @@ class WorkoutBeginnerDay extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(workoutPlans[index].name.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                              Spacer(),
+                              Text(workoutPlans[index].name.toString(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                              const Spacer(),
                               Row(
                                 children: [
-                                  Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workoutPlans[index].duration.toString())),
-                                  SizedBox(width: 10),
-                                  Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(workoutPlans[index].reps.toString())),
+                                  Chip(avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workoutPlans[index].duration.toString())),
+                                  const SizedBox(width: 10),
+                                  Chip(avatar: const Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(workoutPlans[index].reps.toString())),
                                 ],
                               ),
                             ],
@@ -91,128 +91,6 @@ class WorkoutBeginnerDay extends StatelessWidget {
                     ),
                   ),
                 ),
-                /*Expanded(
-                  child: ListView(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    children: [
-                      Container(
-                        height: 200,
-                        width: double.infinity,
-                        margin: EdgeInsets.only(bottom: 20),
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Color(0xffedfdf2),
-                        ),
-                        child: Stack(
-                          children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Jumping\nJacks", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                    SizedBox(width: 10),
-                                    Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("4x")),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Positioned.fill(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Gif(
-                                  autostart: Autostart.loop,
-                                  duration: Duration(milliseconds: 1500),
-                                  placeholder: (context) =>
-                                  const Center(child: CircularProgressIndicator()),
-                                  image: const AssetImage('assets/images/jumping-jacks.gif'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 200,
-                        width: double.infinity,
-                        margin: EdgeInsets.only(bottom: 20),
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Color(0xfffcecec),
-                        ),
-                        child: Stack(
-                          children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Squats", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                    SizedBox(width: 10),
-                                    Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("4x")),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Positioned.fill(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Gif(
-                                  autostart: Autostart.loop,
-                                  duration: Duration(milliseconds: 1500),
-                                  placeholder: (context) =>
-                                  const Center(child: CircularProgressIndicator()),
-                                  image: const AssetImage('assets/images/squats.gif'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 200,
-                        width: double.infinity,
-                        margin: EdgeInsets.only(bottom: 20),
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Color(0xffedf6fd),
-                        ),
-                        child: Stack(
-                          children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("High\nPlank", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text("30 sec")),
-                                    SizedBox(width: 10),
-                                    Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text("4x")),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Positioned.fill(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Image.asset('assets/images/high-plank.png', width: 120,),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),*/
               ],
             ),
           ),

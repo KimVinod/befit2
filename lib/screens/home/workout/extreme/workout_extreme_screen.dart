@@ -41,15 +41,15 @@ class WorkoutExtreme extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 5),
-                Text("Perform the following routine on Monday, Wednesday, Thursday and Saturday", textAlign: TextAlign.center),
-                SizedBox(height: 10),
+                const SizedBox(height: 5),
+                const Text("Perform the following routine on Monday, Wednesday, Thursday and Saturday", textAlign: TextAlign.center),
+                const SizedBox(height: 10),
                 Center(
                   child: Material(
                     child: TabBar(
                       isScrollable: true,
                       indicatorColor: Colors.green,
-                      tabs: [
+                      tabs: const [
                         Tab(text: 'Day 1'),
                         Tab(text: 'Day 3'),
                         Tab(text: 'Day 4'),
@@ -90,14 +90,14 @@ class WorkoutExtreme extends StatelessWidget {
     List<Workout> weekWorkouts = workoutExtremePlan.where((workout) => workout.day == day).toList();
 
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(vertical: 15),
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       itemCount: weekWorkouts.length,
       itemBuilder: (context, index) => Container(
         height: 200,
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: 20),
-        padding: EdgeInsets.all(12),
+        margin: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: colorList[index],
@@ -107,13 +107,13 @@ class WorkoutExtreme extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(weekWorkouts[index].name.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                Spacer(),
+                Text(weekWorkouts[index].name.toString(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                const Spacer(),
                 Row(
                   children: [
-                    Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text(weekWorkouts[index].duration.toString())),
-                    SizedBox(width: 10),
-                    Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(weekWorkouts[index].reps.toString())),
+                    Chip(avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(weekWorkouts[index].duration.toString())),
+                    const SizedBox(width: 10),
+                    Chip(avatar: const Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(weekWorkouts[index].reps.toString())),
                   ],
                 ),
               ],
