@@ -37,6 +37,8 @@ android {
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
+    namespace 'com.kimvinod.befit_v2'
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
