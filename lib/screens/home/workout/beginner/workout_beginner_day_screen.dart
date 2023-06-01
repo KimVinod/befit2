@@ -3,18 +3,11 @@ import 'package:befit_v2/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gif/gif.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class WorkoutBeginnerDay extends StatefulWidget {
+class WorkoutBeginnerDay extends StatelessWidget {
   final int day;
   final List<Workout> workoutPlans;
   const WorkoutBeginnerDay({Key? key, required this.workoutPlans, required this.day}) : super(key: key);
-
-  @override
-  State<WorkoutBeginnerDay> createState() => _WorkoutBeginnerDayState();
-}
-
-class _WorkoutBeginnerDayState extends State<WorkoutBeginnerDay> {
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +33,7 @@ class _WorkoutBeginnerDayState extends State<WorkoutBeginnerDay> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      "Day ${widget.day}",
+                      "Day $day",
                       style: const TextStyle(
                           color: Colors.black,
                           fontSize: 24,
@@ -53,7 +46,7 @@ class _WorkoutBeginnerDayState extends State<WorkoutBeginnerDay> {
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(vertical: 15),
-                    itemCount: widget.workoutPlans.length,
+                    itemCount: workoutPlans.length,
                     itemBuilder: (context, index) => Container(
                       height: 200,
                       width: double.infinity,
@@ -68,13 +61,13 @@ class _WorkoutBeginnerDayState extends State<WorkoutBeginnerDay> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.workoutPlans[index].name.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                              Text(workoutPlans[index].name.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                               Spacer(),
                               Row(
                                 children: [
-                                  Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text(widget.workoutPlans[index].duration.toString())),
+                                  Chip(avatar: Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workoutPlans[index].duration.toString())),
                                   SizedBox(width: 10),
-                                  Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(widget.workoutPlans[index].reps.toString())),
+                                  Chip(avatar: Icon(FontAwesomeIcons.repeat, size: 16,), label: Text(workoutPlans[index].reps.toString())),
                                 ],
                               ),
                             ],
@@ -83,13 +76,13 @@ class _WorkoutBeginnerDayState extends State<WorkoutBeginnerDay> {
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Gif(
-                                height: widget.workoutPlans[index].gifSize,
-                                width: widget.workoutPlans[index].gifSize,
+                                height: workoutPlans[index].gifSize,
+                                width: workoutPlans[index].gifSize,
                                 autostart: Autostart.loop,
-                                duration: Duration(milliseconds: widget.workoutPlans[index].gifDuration!),
+                                duration: Duration(milliseconds: workoutPlans[index].gifDuration!),
                                 placeholder: (context) =>
                                 const Center(child: CircularProgressIndicator()),
-                                image: AssetImage(widget.workoutPlans[index].gif.toString()),
+                                image: AssetImage(workoutPlans[index].gif.toString()),
                               ),
                             ),
                           ),

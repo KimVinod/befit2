@@ -296,46 +296,15 @@ class _HomeState extends State<Home> {
                                         Icon(FontAwesomeIcons.dumbbell, size: 17, color: Colors.teal.shade900,),
                                       ],
                                     ),
-                                    const SizedBox(height: 25),
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: TweenAnimationBuilder(
-                                              tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
-                                              duration: const Duration(seconds: 2),
-                                              builder: (context, value, _) {
-                                                return CircularProgressIndicator(
-                                                  value: value.toDouble(),
-                                                  color: Colors.teal.shade900,
-                                                  strokeWidth: 3,
-                                                  backgroundColor: Colors.teal.shade900.withOpacity(0.2),
-                                                );
-                                              }
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            Countup(
-                                              begin: 0,
-                                              end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toDouble(),
-                                              duration: const Duration(seconds: 2),
-                                              style: TextStyle(
-                                                fontSize: 32,
-                                                color: Colors.teal.shade900,
-                                              ),
-                                            )
-                                            /*AnimatedDigitWidget(
-                                                controller: scoreController,
-                                                  duration: Duration(seconds: 2),
-                                                  value: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000),
-                                              ),*/
-                                            //Text(calcexitulateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toString(), style: TextStyle(fontSize: 32, color: appUIDarkPurpleColor),),
-                                          ],
-                                        ),
-                                      ],
+                                    SizedBox(height: 25),
+                                    Container(
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: Colors.teal.shade100, width: 3)
+                                      ),
+                                      child: Center(child: Icon(FontAwesomeIcons.personRunning, size: 30, color: Colors.teal.shade900,)),
+                                      //child: Center(child: Text("", style: TextStyle(fontSize: 20, color: Colors.teal.shade900))),
                                     ),
                                   ],
                                 ),
