@@ -44,27 +44,18 @@ class WorkoutExtreme extends StatelessWidget {
                 const SizedBox(height: 5),
                 const Text("Perform the following routine on Monday, Wednesday, Thursday and Saturday", textAlign: TextAlign.center),
                 const SizedBox(height: 10),
-                Center(
-                  child: Material(
-                    child: TabBar(
-                      isScrollable: true,
-                      indicatorColor: Colors.green,
-                      tabs: const [
-                        Tab(text: 'Day 1'),
-                        Tab(text: 'Day 3'),
-                        Tab(text: 'Day 4'),
-                        Tab(text: 'Day 6'),
-                      ],
-                      unselectedLabelColor: Colors.grey,
-                      indicator: RectangularIndicator(
-                          color: appUISecondaryColor.withValues(alpha: 0.5),
-                          bottomLeftRadius: 100,
-                          bottomRightRadius: 100,
-                          topLeftRadius: 100,
-                          topRightRadius: 100,
-                          verticalPadding: 6
-                      ),
-                    ),
+                TabBar(
+                  overlayColor: WidgetStateProperty.all(appUISecondaryColor.withValues(alpha: 0.2)),
+                  labelColor: Colors.black,
+                  tabs: const [
+                    Tab(text: 'Day 1'),
+                    Tab(text: 'Day 3'),
+                    Tab(text: 'Day 4'),
+                    Tab(text: 'Day 6'),
+                  ],
+                  unselectedLabelColor: Colors.grey,
+                  indicator: MaterialIndicator(
+                      color: appUISecondaryColor.withValues(alpha: 0.5),
                   ),
                 ),
                 Expanded(

@@ -68,24 +68,18 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                Material(
-                  child: TabBar(
-                    indicatorColor: Colors.green,
-                    tabs: const [
-                      Tab(text: "Week 1"),
-                      Tab(text: "Week 2"),
-                      Tab(text: "Week 3"),
-                      Tab(text: "Week 4"),
-                    ],
-                    unselectedLabelColor: Colors.grey,
-                    indicator: RectangularIndicator(
-                        color: appUISecondaryColor.withValues(alpha: 0.5),
-                        bottomLeftRadius: 100,
-                        bottomRightRadius: 100,
-                        topLeftRadius: 100,
-                        topRightRadius: 100,
-                        verticalPadding: 6
-                    ),
+                TabBar(
+                  overlayColor: WidgetStateProperty.all(appUISecondaryColor.withValues(alpha: 0.2)),
+                  labelColor: Colors.black,
+                  tabs: const [
+                    Tab(text: "Week 1"),
+                    Tab(text: "Week 2"),
+                    Tab(text: "Week 3"),
+                    Tab(text: "Week 4"),
+                  ],
+                  unselectedLabelColor: Colors.grey,
+                  indicator: MaterialIndicator(
+                      color: appUISecondaryColor.withValues(alpha: 0.5),
                   ),
                 ),
                 Expanded(
