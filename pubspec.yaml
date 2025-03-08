@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 2.1.0+2
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=3.5.3 <5.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,33 +35,32 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.5
-  firebase_core: ^2.13.1
-  firebase_crashlytics: ^3.3.2
-  firebase_messaging: ^14.6.2
-  flutter_local_notifications: ^14.1.1
-  flutter_staggered_grid_view: ^0.6.2
-  flutter_expandable_fab: ^1.8.0
-  modal_bottom_sheet: ^3.0.0-pre
+  firebase_core: ^3.12.1
+  firebase_crashlytics: ^4.3.4
+  firebase_messaging: ^15.2.4
+  flutter_local_notifications: ^18.0.1
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_expandable_fab: ^2.3.0
+  modal_bottom_sheet: ^3.0.0
   wave: ^0.2.2
-  font_awesome_flutter: ^10.4.0
+  font_awesome_flutter: ^10.8.0
   flutter_animation_progress_bar: ^2.3.1
   roundcheckbox: ^2.0.5
-  page_view_dot_indicator: ^2.1.0
+  page_view_dot_indicator: ^2.3.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  image_picker: ^0.8.7+5
+  image_picker: ^1.1.2
   horizontal_blocked_scroll_physics: ^4.0.1
-  path_provider: ^2.0.15
-  path: ^1.8.3
-  animated_digit: ^3.2.1
-  animated_flip_counter: ^0.2.5
+  path_provider: ^2.1.5
+  path: ^1.9.1
+  animated_digit: ^3.2.3
+  animated_flip_counter: ^0.3.4
   countup: ^0.1.4
-  showcaseview: ^2.0.3
-  flutter_launcher_icons: ^0.13.1
-  flutter_svg: ^2.0.6
+  showcaseview: ^4.0.1
+  flutter_launcher_icons: ^0.14.3
+  flutter_svg: ^2.0.17
   tab_indicator_styler: ^2.0.0
-  gif: ^2.2.0
+  gif: ^2.3.0
 
 flutter_icons:
   android: "launcher_icon"
@@ -77,7 +76,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
