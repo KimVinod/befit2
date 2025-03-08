@@ -499,7 +499,7 @@ class _HomeState extends State<Home> {
           heroTag: 'open'
         ),
         closeButtonBuilder: DefaultFloatingActionButtonBuilder(
-          child: const Icon(Icons.add, size: 30, color: Colors.white,),
+          child: const Icon(Icons.close, size: 30, color: Colors.white,),
           backgroundColor: Colors.black,
           heroTag: 'close'
         ),
@@ -578,7 +578,7 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
+                    height: 200,
                     width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalWaterML / waterGoalML),
@@ -636,7 +636,7 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
+                    height: 200,
                     width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalCaloriesKCAL / caloriesGoalKCAL),
@@ -693,7 +693,7 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
+                    height: 200,
                     width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
