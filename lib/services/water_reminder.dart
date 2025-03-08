@@ -15,7 +15,7 @@ class WaterReminder {
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
     await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
+        AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
 
 
     await flutterLocalNotificationsPlugin

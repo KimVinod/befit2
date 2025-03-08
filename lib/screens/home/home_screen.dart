@@ -23,7 +23,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -138,370 +138,373 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ShowCaseWidget(
-        builder: Builder(
-          builder: (context) {
-            showCaseContext = context;
-            return SafeArea(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Showcase(
-                            key: _welcomeKey,
-                            titleAlignment: TextAlign.center,
-                            descriptionAlignment: TextAlign.center,
-                            title: 'Welcome to BeFit',
-                            description: 'Track and maintain your fitness life with us.\nHave a good day! Take care!',
-                            child: const Text(
-                              "BeFit",
-                              style: TextStyle(
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold,
-                                color: appUIPrimaryColor,
-                              ),
+        builder: (context) {
+          showCaseContext = context;
+          return SafeArea(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Showcase(
+                          key: _welcomeKey,
+                          titleTextAlign: TextAlign.center,
+                          descriptionTextAlign: TextAlign.center,
+                          title: 'Welcome to BeFit',
+                          description: 'Track and maintain your fitness life with us.\nHave a good day! Take care!',
+                          child: const Text(
+                            "BeFit",
+                            style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: appUIPrimaryColor,
                             ),
                           ),
-                          Showcase(
-                            key: _profileKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'You can set your profile and other settings from here!',
-                            child: Material(
-                              color: appUIPrimaryColor.withOpacity(0.11),
-                              shape: const CircleBorder(),
-                              child: InkWell(
-                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile())).then((value) => loadData()),
-                                customBorder: const CircleBorder(),
-                                child: ClipOval(
-                                  child: Container(
-                                    height: 65,
-                                    width: 65,
-                                    decoration:  const BoxDecoration(
-                                        color: Colors.transparent,
-                                        shape: BoxShape.circle
-                                    ),
-                                    child: userPic =="" ? const Icon(Icons.person_outline, size: 28)
-                                        : Image.file(
-                                      File(userPic),
-                                      fit: BoxFit.cover,
-                                      errorBuilder: (context, _, __) => const Center(child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Icon(Icons.person_outline, size: 28),
-                                      )),
-                                    ),
+                        ),
+                        Showcase(
+                          key: _profileKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'You can set your profile and other settings from here!',
+                          child: Material(
+                            color: appUIPrimaryColor.withValues(alpha: 0.11),
+                            shape: const CircleBorder(),
+                            child: InkWell(
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile())).then((value) => loadData()),
+                              customBorder: const CircleBorder(),
+                              child: ClipOval(
+                                child: Container(
+                                  height: 65,
+                                  width: 65,
+                                  decoration:  const BoxDecoration(
+                                      color: Colors.transparent,
+                                      shape: BoxShape.circle
+                                  ),
+                                  child: userPic =="" ? const Icon(Icons.person_outline, size: 28)
+                                      : Image.file(
+                                    File(userPic),
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, _, __) => const Center(child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Icon(Icons.person_outline, size: 28),
+                                    )),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Text(getWishingText(), style: const TextStyle(fontSize: 33, fontWeight: FontWeight.w300)),
-                      if(userName.isNotEmpty)...[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            //Text("Mr. ", style: TextStyle(fontSize: 33, fontWeight: FontWeight.w300)),
-                            Text(userName, style: const TextStyle(fontSize: 33, fontWeight: FontWeight.w500)),
-                          ],
                         ),
                       ],
-                      const SizedBox(height: 15),
-                      StaggeredGrid.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 12,
+                    ),
+                    const SizedBox(height: 15),
+                    Text(getWishingText(), style: const TextStyle(fontSize: 33, fontWeight: FontWeight.w300)),
+                    if(userName.isNotEmpty)...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Showcase(
-                            key: _waterKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'Your water intake is shown here!',
-                            child: GestureDetector(
-                              onTap: ()=>showWaterDialogBox(),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: appUILightBlueColor,
-                                  //border: Border.all(color: Colors.grey.shade300, width: 1.5),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Water", style: TextStyle(fontSize: 18, color: appUIDarkBlueColor),),
-                                        Icon(Icons.water_drop_outlined, size: 22, color: appUIDarkBlueColor,),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 25),
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: TweenAnimationBuilder(
-                                              tween: Tween(begin: 0, end: totalWaterML / waterGoalML),
-                                              duration: const Duration(seconds: 2),
-                                              builder: (context, value, _) {
-                                                return CircularProgressIndicator(
-                                                  value: value.toDouble(),
-                                                  color: appUIDarkBlueColor,
-                                                  strokeWidth: 3,
-                                                  backgroundColor: Colors.lightBlue.shade100,
-                                                );
-                                              }
-                                          ),
-                                        ),
-                                        Text("${totalWaterML / 1000 == 0 ? 0 : totalWaterML / 1000} L", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: appUIDarkBlueColor),),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 25),
-                                    if(totalWaterML >= 1500)...[
-                                      const Text("You're doing well ♡", style: TextStyle(fontSize: 16, color: appUIDarkBlueColor),),
-                                    ] else... [
-                                      const Text("Keep on going ♡", style: TextStyle(fontSize: 16, color: appUIDarkBlueColor),),
+                          //Text("Mr. ", style: TextStyle(fontSize: 33, fontWeight: FontWeight.w300)),
+                          Text(userName, style: const TextStyle(fontSize: 33, fontWeight: FontWeight.w500)),
+                        ],
+                      ),
+                    ],
+                    const SizedBox(height: 15),
+                    StaggeredGrid.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 12,
+                      children: [
+                        Showcase(
+                          key: _waterKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'Your water intake is shown here!',
+                          child: GestureDetector(
+                            onTap: ()=>showWaterDialogBox(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: appUILightBlueColor,
+                                //border: Border.all(color: Colors.grey.shade300, width: 1.5),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Water", style: TextStyle(fontSize: 18, color: appUIDarkBlueColor),),
+                                      Icon(Icons.water_drop_outlined, size: 22, color: appUIDarkBlueColor,),
                                     ],
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: 100,
+                                        width: 100,
+                                        child: TweenAnimationBuilder(
+                                            tween: Tween(begin: 0, end: totalWaterML / waterGoalML),
+                                            duration: const Duration(seconds: 2),
+                                            builder: (context, value, _) {
+                                              return CircularProgressIndicator(
+                                                value: value.toDouble(),
+                                                color: appUIDarkBlueColor,
+                                                strokeWidth: 3,
+                                                backgroundColor: Colors.lightBlue.shade100,
+                                              );
+                                            }
+                                        ),
+                                      ),
+                                      Text("${totalWaterML / 1000 == 0 ? 0 : totalWaterML / 1000} L", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: appUIDarkBlueColor),),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 25),
+                                  if(totalWaterML >= 1500)...[
+                                    const Text("You're doing well ♡", style: TextStyle(fontSize: 16, color: appUIDarkBlueColor),),
+                                  ] else... [
+                                    const Text("Keep on going ♡", style: TextStyle(fontSize: 16, color: appUIDarkBlueColor),),
                                   ],
-                                ),
+                                ],
                               ),
                             ),
                           ),
-                          Showcase(
-                            key: _workoutKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'Workout plans are shown here!',
-                            child: GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Workout())),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  color: appUILLightGreenColor.withOpacity(0.65),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Workout", style: TextStyle(fontSize: 18, color: Colors.teal.shade900),),
-                                        Icon(FontAwesomeIcons.dumbbell, size: 17, color: Colors.teal.shade900,),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 25),
-                                    Container(
-                                      height: 100,
-                                      decoration: BoxDecoration(
+                        ),
+                        Showcase(
+                          key: _workoutKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'Workout plans are shown here!',
+                          child: GestureDetector(
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Workout())),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                              decoration: BoxDecoration(
+                                color: appUILLightGreenColor.withValues(alpha: 0.65),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Workout", style: TextStyle(fontSize: 18, color: Colors.teal.shade900),),
+                                      Icon(FontAwesomeIcons.dumbbell, size: 17, color: Colors.teal.shade900,),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Container(
+                                    height: 100,
+                                    decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(color: Colors.teal.shade100, width: 3)
+                                    ),
+                                    child: Center(child: Icon(FontAwesomeIcons.personRunning, size: 30, color: Colors.teal.shade900,)),
+                                    //child: Center(child: Text("", style: TextStyle(fontSize: 20, color: Colors.teal.shade900))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Showcase(
+                          key: _caloriesKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'Your calorie intake is shown here!',
+                          child: GestureDetector(
+                            onTap: ()=>showCaloriesDialogBox(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey.shade300, width: 1.5),
+                              ),
+                              child: Column(
+                                children: [
+                                  const Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Calories", style: TextStyle(fontSize: 18, color: appUISecondaryColor),),
+                                      Icon(Icons.fastfood_outlined, size: 18, color: appUISecondaryColor,),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: 100,
+                                        width: 100,
+                                        child: TweenAnimationBuilder(
+                                            tween: Tween(begin: 0, end: totalCaloriesKCAL / caloriesGoalKCAL),
+                                            duration: const Duration(seconds: 2),
+                                            builder: (context, value, _) {
+                                              return CircularProgressIndicator(
+                                                value: value.toDouble(),
+                                                color: appUISecondaryColor,
+                                                strokeWidth: 3,
+                                                backgroundColor: Colors.orange.shade100,
+                                              );
+                                            }
+                                        ),
                                       ),
-                                      child: Center(child: Icon(FontAwesomeIcons.personRunning, size: 30, color: Colors.teal.shade900,)),
-                                      //child: Center(child: Text("", style: TextStyle(fontSize: 20, color: Colors.teal.shade900))),
-                                    ),
-                                  ],
-                                ),
+                                      Column(
+                                        children: [
+                                          Text("$totalCaloriesKCAL kcal", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: appUISecondaryColor),),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                          Showcase(
-                            key: _caloriesKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'Your calorie intake is shown here!',
-                            child: GestureDetector(
-                              onTap: ()=>showCaloriesDialogBox(),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.grey.shade300, width: 1.5),
-                                ),
-                                child: Column(
-                                  children: [
-                                    const Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Calories", style: TextStyle(fontSize: 18, color: appUISecondaryColor),),
-                                        Icon(Icons.fastfood_outlined, size: 18, color: appUISecondaryColor,),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 25),
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: TweenAnimationBuilder(
-                                              tween: Tween(begin: 0, end: totalCaloriesKCAL / caloriesGoalKCAL),
-                                              duration: const Duration(seconds: 2),
-                                              builder: (context, value, _) {
-                                                return CircularProgressIndicator(
-                                                  value: value.toDouble(),
-                                                  color: appUISecondaryColor,
-                                                  strokeWidth: 3,
-                                                  backgroundColor: Colors.orange.shade100,
-                                                );
-                                              }
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            Text("$totalCaloriesKCAL kcal", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: appUISecondaryColor),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                        ),
+                        Showcase(
+                          key: _bmiKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'Your BMI is shown here!',
+                          child: GestureDetector(
+                            onTap: () => showBMIDialogBox(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: appUILightBrownColor,
                               ),
-                            ),
-                          ),
-                          Showcase(
-                            key: _bmiKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'Your BMI is shown here!',
-                            child: GestureDetector(
-                              onTap: () => showBMIDialogBox(),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: appUILightBrownColor,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("BMI", style: TextStyle(fontSize: 18, color: appUIBrownColor),),
-                                        Icon(FontAwesomeIcons.childReaching, size: 20, color: appUIBrownColor,),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 15),
-                                    Text("${getBMI()} ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                    const SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        Text("$userHeight ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                        const Text("cm", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("$userWeight ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                        const Text("kg", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("$userAge ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                        const Text("age", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
-                                      ],
-                                    ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("BMI", style: TextStyle(fontSize: 18, color: appUIBrownColor),),
+                                      Icon(FontAwesomeIcons.childReaching, size: 20, color: appUIBrownColor,),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Text("${getBMI()} ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      Text("$userHeight ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                      const Text("cm", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text("$userWeight ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                      const Text("kg", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text("$userAge ", style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                      const Text("age", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300, color: appUIBrownColor),),
+                                    ],
+                                  ),
 
-                                  ],
-                                ),
+                                ],
                               ),
                             ),
                           ),
-                          Showcase(
-                            key: _scoreKey,
-                            descriptionAlignment: TextAlign.center,
-                            description: 'Your score is shown here!\nThis shows your overall performance of the day out of 100.',
-                            child: GestureDetector(
-                              onTap: () => showScoreDialogBox(),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  color: appUILavenderColor.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.grey.shade300, width: 1.5),
-                                ),
-                                child: Column(
-                                  children: [
-                                    const Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Score", style: TextStyle(fontSize: 18, color: appUIDarkPurpleColor),),
-                                        Icon(Icons.scoreboard_outlined, size: 19, color: appUIDarkPurpleColor,),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 25),
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: TweenAnimationBuilder(
-                                              tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
-                                              duration: const Duration(seconds: 2),
-                                              builder: (context, value, _) {
-                                                return CircularProgressIndicator(
-                                                  value: value.toDouble(),
-                                                  color: appUIDarkPurpleColor,
-                                                  strokeWidth: 3,
-                                                  backgroundColor: appUIDarkPurpleColor.withOpacity(0.2),
-                                                );
-                                              }
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            Countup(
-                                              begin: 0,
-                                              end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toDouble(),
-                                              duration: const Duration(seconds: 2),
-                                              style: const TextStyle(
-                                                fontSize: 32,
+                        ),
+                        Showcase(
+                          key: _scoreKey,
+                          descriptionTextAlign: TextAlign.center,
+                          description: 'Your score is shown here!\nThis shows your overall performance of the day out of 100.',
+                          child: GestureDetector(
+                            onTap: () => showScoreDialogBox(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                              decoration: BoxDecoration(
+                                color: appUILavenderColor.withValues(alpha: 0.8),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey.shade300, width: 1.5),
+                              ),
+                              child: Column(
+                                children: [
+                                  const Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Score", style: TextStyle(fontSize: 18, color: appUIDarkPurpleColor),),
+                                      Icon(Icons.scoreboard_outlined, size: 19, color: appUIDarkPurpleColor,),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: 100,
+                                        width: 100,
+                                        child: TweenAnimationBuilder(
+                                            tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
+                                            duration: const Duration(seconds: 2),
+                                            builder: (context, value, _) {
+                                              return CircularProgressIndicator(
+                                                value: value.toDouble(),
                                                 color: appUIDarkPurpleColor,
-                                              ),
-                                            )
-                                            /*AnimatedDigitWidget(
+                                                strokeWidth: 3,
+                                                backgroundColor: appUIDarkPurpleColor.withValues(alpha: 0.2),
+                                              );
+                                            }
+                                        ),
+                                      ),
+                                      Column(
+                                        children: [
+                                          Countup(
+                                            begin: 0,
+                                            end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toDouble(),
+                                            duration: const Duration(seconds: 2),
+                                            style: const TextStyle(
+                                              fontSize: 32,
+                                              color: appUIDarkPurpleColor,
+                                            ),
+                                          )
+                                          /*AnimatedDigitWidget(
                                                 controller: scoreController,
                                                   duration: Duration(seconds: 2),
                                                   value: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000),
                                               ),*/
-                                            //Text(calcexitulateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toString(), style: TextStyle(fontSize: 32, color: appUIDarkPurpleColor),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                          //Text(calcexitulateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000).toString(), style: TextStyle(fontSize: 32, color: appUIDarkPurpleColor),),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: ExpandableFab(
         key: fabKey,
-        openButtonHeroTag: 'open',
-        closeButtonHeroTag: 'close',
+        openButtonBuilder: DefaultFloatingActionButtonBuilder(
+          child: const Icon(Icons.add, size: 30, color: Colors.white,),
+          backgroundColor: Colors.black,
+          heroTag: 'open'
+        ),
+        closeButtonBuilder: DefaultFloatingActionButtonBuilder(
+          child: const Icon(Icons.close, size: 30, color: Colors.white,),
+          backgroundColor: Colors.black,
+          heroTag: 'close'
+        ),
         fanAngle: 90,
-        backgroundColor: Colors.black,
-        child: const Icon(Icons.add, size: 30, color: Colors.white,),
         overlayStyle: ExpandableFabOverlayStyle(blur: 3),
-        closeButtonStyle: const ExpandableFabCloseButtonStyle(backgroundColor: Colors.black),
         children: [
           FloatingActionButton(
             backgroundColor: appUISecondaryColor,
@@ -575,8 +578,8 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 200,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalWaterML / waterGoalML),
                         duration: const Duration(seconds: 2),
@@ -633,8 +636,8 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 200,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalCaloriesKCAL / caloriesGoalKCAL),
                         duration: const Duration(seconds: 2),
@@ -690,8 +693,8 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 200,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
                         duration: const Duration(seconds: 2),
@@ -700,7 +703,7 @@ class _HomeState extends State<Home> {
                             value: value.toDouble(),
                             color: appUIDarkPurpleColor,
                             strokeWidth: 3,
-                            backgroundColor: appUIDarkPurpleColor.withOpacity(0.2),
+                            backgroundColor: appUIDarkPurpleColor.withValues(alpha: 0.2),
                           );
                         }
                     ),
@@ -845,7 +848,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -858,10 +861,10 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
-                            color: selectedType == 1 ? appUIPrimaryColor.withOpacity(0.15) : Colors.white,
+                            color: selectedType == 1 ? appUIPrimaryColor.withValues(alpha: 0.15) : Colors.white,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
                               onTap: () {
@@ -871,7 +874,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -884,7 +887,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 2 ? appUILightBrownColor : Colors.white,
@@ -897,7 +900,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -910,10 +913,10 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
-                            color: selectedType == 3 ? appUILavenderColor.withOpacity(0.8) : Colors.white,
+                            color: selectedType == 3 ? appUILavenderColor.withValues(alpha: 0.8) : Colors.white,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
                               onTap: () {
@@ -923,7 +926,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -1018,7 +1021,7 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         int currentWaterML = n * int.parse(waterController.text);
                         totalWaterML = setStateForWater(currentWater: currentWaterML);
-                        userFitnessDataBox.put("water", totalWaterML).then((value) => Navigator.pop(context));
+                        userFitnessDataBox.put("water", totalWaterML).then((value) => context.mounted ? Navigator.pop(context) : {});
                       },
                       color: appUIPrimaryColor,
                       borderRadius: BorderRadius.circular(12),
@@ -1256,7 +1259,7 @@ class _HomeState extends State<Home> {
                if(selectedMeals.isNotEmpty) {
                  int currentCaloriesKCAL = selectedMeals.map((meal) => meal.calories).reduce((a, b) => a+b);
                  totalCaloriesKCAL = setStateForCalories(currentCalories: currentCaloriesKCAL);
-                 userFitnessDataBox.put("calories", totalCaloriesKCAL).then((value) => Navigator.pop(context));
+                 userFitnessDataBox.put("calories", totalCaloriesKCAL).then((value) => context.mounted ? Navigator.pop(context) : {});
                }
              },
              color: appUIPrimaryColor,
@@ -1273,6 +1276,7 @@ class _HomeState extends State<Home> {
 
   Future<void> showAddReminderModalBottomSheet() async {
     final isActive = await WaterReminder.isReminderActive();
+    if(!mounted) return;
     if(isActive) {
       int selectedType = 1;
       showBarModalBottomSheet(context: context, builder: (context) => StatefulBuilder(
@@ -1320,7 +1324,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 1 ? appUILightBlueColor : Colors.white,
@@ -1353,11 +1357,10 @@ class _HomeState extends State<Home> {
                       child: CupertinoButton(
                         onPressed: () {
                           if(selectedType == 0) {
-                            WaterReminder.cancel().then((value) {
-                              Navigator.pop(context);
-                            });
+                            WaterReminder.cancel().then((value) => context.mounted ? Navigator.pop(context)  : {});
                           } else {
                             WaterReminder.remindHourly().then((value) {
+                              if(!context.mounted) return;
                               UIComponents.showSnackBar(context, "Reminder added!", const Duration(seconds: 3));
                               Navigator.pop(context);
                             });
@@ -1408,7 +1411,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 85,
+                                width: 90,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -1421,7 +1424,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 1 ? appUILightBlueColor : Colors.white,
@@ -1433,7 +1436,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 85,
+                                width: 90,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -1454,11 +1457,10 @@ class _HomeState extends State<Home> {
                       child: CupertinoButton(
                         onPressed: () {
                           if(selectedType == 0) {
-                            WaterReminder.cancel().then((value) {
-                              Navigator.pop(context);
-                            });
+                            WaterReminder.cancel().then((value) => context.mounted ? Navigator.pop(context)  : {});
                           } else {
                             WaterReminder.remindHourly().then((value) {
+                              if(!context.mounted) return;
                               Navigator.pop(context);
                               UIComponents.showSnackBar(context, "Reminder added!", const Duration(seconds: 3));
                             });

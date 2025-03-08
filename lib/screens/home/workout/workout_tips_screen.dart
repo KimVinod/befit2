@@ -3,7 +3,7 @@ import 'package:befit_v2/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutTips extends StatelessWidget {
-  const WorkoutTips({Key? key}) : super(key: key);
+  const WorkoutTips({super.key});
 
   @override
   Widget build(BuildContext context) {

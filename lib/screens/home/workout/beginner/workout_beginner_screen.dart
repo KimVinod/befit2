@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WorkoutBeginner extends StatefulWidget {
-  const WorkoutBeginner({Key? key}) : super(key: key);
+  const WorkoutBeginner({super.key});
 
   @override
   State<WorkoutBeginner> createState() => _WorkoutBeginnerState();
@@ -68,24 +68,18 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                Material(
-                  child: TabBar(
-                    indicatorColor: Colors.green,
-                    tabs: const [
-                      Tab(text: "Week 1"),
-                      Tab(text: "Week 2"),
-                      Tab(text: "Week 3"),
-                      Tab(text: "Week 4"),
-                    ],
-                    unselectedLabelColor: Colors.grey,
-                    indicator: RectangularIndicator(
-                        color: appUISecondaryColor.withOpacity(0.5),
-                        bottomLeftRadius: 100,
-                        bottomRightRadius: 100,
-                        topLeftRadius: 100,
-                        topRightRadius: 100,
-                        verticalPadding: 6
-                    ),
+                TabBar(
+                  overlayColor: WidgetStateProperty.all(appUISecondaryColor.withValues(alpha: 0.2)),
+                  labelColor: Colors.black,
+                  tabs: const [
+                    Tab(text: "Week 1"),
+                    Tab(text: "Week 2"),
+                    Tab(text: "Week 3"),
+                    Tab(text: "Week 4"),
+                  ],
+                  unselectedLabelColor: Colors.grey,
+                  indicator: MaterialIndicator(
+                      color: appUISecondaryColor.withValues(alpha: 0.5),
                   ),
                 ),
                 Expanded(
@@ -119,49 +113,39 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
       itemBuilder: (context, index) {
         int day = startIndex + index;
         List<Workout> workouts = separatedWorkouts[day] ?? [];
-        if(workouts.any((e) => e.isRelax)) {
-          return Container(
-            height: 200,
-            width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 20),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: Material(
               borderRadius: BorderRadius.circular(16),
               color: colorList[index],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.bed, size: 16,), label: const Text("Relax Day")),
-              ],
-            ),
-          );
-        }else {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workouts, day: day)));
-            },
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
+              child: InkWell(
                 borderRadius: BorderRadius.circular(16),
-                color: colorList[index],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                  Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
-                ],
+                onTap: () {
+                  if(workouts.any((e) => !e.isRelax)) Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workouts, day: day)));
+                },
+                child: Container(
+                  height: 200,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.transparent,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                      workouts.any((e) => e.isRelax)
+                          ? Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.bed, size: 16,), label: const Text("Relax Day"))
+                          : Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
+                    ],
+                  ),
+                ),
               ),
             ),
-          );
-        }
-      },
+        );
+       }
     );
   }
 }

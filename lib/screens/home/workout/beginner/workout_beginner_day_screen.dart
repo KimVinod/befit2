@@ -7,7 +7,7 @@ import 'package:gif/gif.dart';
 class WorkoutBeginnerDay extends StatelessWidget {
   final int day;
   final List<Workout> workoutPlans;
-  const WorkoutBeginnerDay({Key? key, required this.workoutPlans, required this.day}) : super(key: key);
+  const WorkoutBeginnerDay({super.key, required this.workoutPlans, required this.day});
 
   @override
   Widget build(BuildContext context) {

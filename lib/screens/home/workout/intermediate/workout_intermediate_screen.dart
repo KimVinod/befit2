@@ -7,7 +7,7 @@ import 'package:gif/gif.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WorkoutIntermediate extends StatelessWidget {
-  const WorkoutIntermediate({Key? key}) : super(key: key);
+  const WorkoutIntermediate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,23 +45,19 @@ class WorkoutIntermediate extends StatelessWidget {
                 const SizedBox(height: 5),
                 const Text("Perform the following routine on Monday, Wednesday and Friday", textAlign: TextAlign.center),
                 const SizedBox(height: 10),
-                Material(
-                  child: TabBar(
-                    isScrollable: true,
-                    indicatorColor: Colors.green,
-                    tabs: [
-                      for (int week = 1; week <= 8; week++)
-                        Tab(text: 'Week $week'),
-                    ],
-                    unselectedLabelColor: Colors.grey,
-                    indicator: RectangularIndicator(
-                        color: appUISecondaryColor.withOpacity(0.5),
-                        bottomLeftRadius: 100,
-                        bottomRightRadius: 100,
-                        topLeftRadius: 100,
-                        topRightRadius: 100,
-                        verticalPadding: 6
-                    ),
+                TabBar(
+                  overlayColor: WidgetStateProperty.all(appUISecondaryColor.withValues(alpha: 0.2)),
+                  labelColor: Colors.black,
+                  tabAlignment: TabAlignment.start,
+                  isScrollable: true,
+                  physics: BouncingScrollPhysics(),
+                  tabs: [
+                    for (int week = 1; week <= 8; week++)
+                      Tab(text: 'Week $week'),
+                  ],
+                  unselectedLabelColor: Colors.grey,
+                  indicator: MaterialIndicator(
+                      color: appUISecondaryColor.withValues(alpha: 0.5),
                   ),
                 ),
                 Expanded(
