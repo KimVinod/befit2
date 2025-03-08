@@ -579,7 +579,7 @@ class _HomeState extends State<Home> {
                 children: [
                   SizedBox(
                     height: 150,
-                    width: 150,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalWaterML / waterGoalML),
                         duration: const Duration(seconds: 2),
@@ -637,7 +637,7 @@ class _HomeState extends State<Home> {
                 children: [
                   SizedBox(
                     height: 150,
-                    width: 150,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: totalCaloriesKCAL / caloriesGoalKCAL),
                         duration: const Duration(seconds: 2),
@@ -694,7 +694,7 @@ class _HomeState extends State<Home> {
                 children: [
                   SizedBox(
                     height: 150,
-                    width: 150,
+                    width: 200,
                     child: TweenAnimationBuilder(
                         tween: Tween(begin: 0, end: calculateScore(bmi: getBMI(), calories: totalCaloriesKCAL, water: totalWaterML/1000) / 100),
                         duration: const Duration(seconds: 2),
@@ -848,7 +848,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -861,7 +861,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 1 ? appUIPrimaryColor.withValues(alpha: 0.15) : Colors.white,
@@ -874,7 +874,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -887,7 +887,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 2 ? appUILightBrownColor : Colors.white,
@@ -900,7 +900,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -913,7 +913,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 3 ? appUILavenderColor.withValues(alpha: 0.8) : Colors.white,
@@ -926,7 +926,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 80,
+                                width: 85,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -1324,7 +1324,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 1 ? appUILightBlueColor : Colors.white,
@@ -1411,7 +1411,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 85,
+                                width: 90,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
@@ -1424,7 +1424,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Material(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedType == 1 ? appUILightBlueColor : Colors.white,
@@ -1436,7 +1436,7 @@ class _HomeState extends State<Home> {
                                 });
                               },
                               child: Container(
-                                width: 85,
+                                width: 90,
                                 padding: const EdgeInsets.all(15),
                                 decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.grey.shade400, width: 1.5)),
                                 child: const Column(
