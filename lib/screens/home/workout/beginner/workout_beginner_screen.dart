@@ -119,49 +119,39 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
       itemBuilder: (context, index) {
         int day = startIndex + index;
         List<Workout> workouts = separatedWorkouts[day] ?? [];
-        if(workouts.any((e) => e.isRelax)) {
-          return Container(
-            height: 200,
-            width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 20),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: Material(
               borderRadius: BorderRadius.circular(16),
               color: colorList[index],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.bed, size: 16,), label: const Text("Relax Day")),
-              ],
-            ),
-          );
-        }else {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workouts, day: day)));
-            },
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
+              child: InkWell(
                 borderRadius: BorderRadius.circular(16),
-                color: colorList[index],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                  Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
-                ],
+                onTap: () {
+                  if(workouts.any((e) => !e.isRelax)) Navigator.push(context, MaterialPageRoute(builder: (context) => WorkoutBeginnerDay(workoutPlans: workouts, day: day)));
+                },
+                child: Container(
+                  height: 200,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.transparent,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Day $day", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                      workouts.any((e) => e.isRelax)
+                          ? Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.bed, size: 16,), label: const Text("Relax Day"))
+                          : Chip(backgroundColor: Colors.green.shade200, avatar: const Icon(FontAwesomeIcons.clock, size: 16,), label: Text(workouts.isNotEmpty ? workouts.first.dayDuration ?? "" : "")),
+                    ],
+                  ),
+                ),
               ),
             ),
-          );
-        }
-      },
+        );
+       }
     );
   }
 }
