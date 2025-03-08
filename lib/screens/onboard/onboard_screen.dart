@@ -7,7 +7,7 @@ import 'package:horizontal_blocked_scroll_physics/horizontal_blocked_scroll_phys
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class OnBoard extends StatefulWidget {
-  const OnBoard({Key? key}) : super(key: key);
+  const OnBoard({super.key});
 
   @override
   State<OnBoard> createState() => _OnBoardState();
@@ -112,6 +112,7 @@ class _OnBoardState extends State<OnBoard> {
                                 if(nameController.text.isNotEmpty) {
                                   setScrollPhysics(scrollPhysics: const ScrollPhysics());
                                   _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut).then((value) {
+                                    if(!context.mounted) return;
                                     FocusScope.of(context).unfocus();
                                     setScrollPhysics(scrollPhysics: const LeftBlockedScrollPhysics());
                                   });
@@ -170,6 +171,7 @@ class _OnBoardState extends State<OnBoard> {
                             if(ageController.text.isNotEmpty) {
                               setScrollPhysics(scrollPhysics: const ScrollPhysics());
                               _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut).then((value) {
+                                if(!context.mounted) return;
                                 FocusScope.of(context).unfocus();
                                 setScrollPhysics(scrollPhysics: const LeftBlockedScrollPhysics());
                               });
@@ -219,6 +221,7 @@ class _OnBoardState extends State<OnBoard> {
                             if(heightController.text.isNotEmpty) {
                               setScrollPhysics(scrollPhysics: const ScrollPhysics());
                               _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut).then((value) {
+                                if(!context.mounted) return;
                                 FocusScope.of(context).unfocus();
                                 setScrollPhysics(scrollPhysics: const LeftBlockedScrollPhysics());
                               });
@@ -267,7 +270,10 @@ class _OnBoardState extends State<OnBoard> {
                           customBorder: const CircleBorder(),
                           onTap: () {
                             if(weightController.text.isNotEmpty) {
-                              saveData().then((value) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()), (route) => false));
+                              saveData().then((value) {
+                                if(!context.mounted) return;
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                              });
                             } else {
                               UIComponents.showSnackBar(context, "Weight cannot be empty", const Duration(seconds: 3));
                             }

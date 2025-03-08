@@ -10,7 +10,7 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -47,7 +47,9 @@ class _ProfileState extends State<Profile> {
               TextButton(onPressed: ()=> Navigator.pop(context), child: const Text("NO")),
               TextButton(
                 onPressed: () {
-                  clearFitnessData().then((value) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()), (route) => false));
+                  clearFitnessData().then((value) => {
+                    if(context.mounted) Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()), (route) => false)
+                  });
                 },
                 child: const Text("YES"),
               ),

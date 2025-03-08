@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WorkoutBeginner extends StatefulWidget {
-  const WorkoutBeginner({Key? key}) : super(key: key);
+  const WorkoutBeginner({super.key});
 
   @override
   State<WorkoutBeginner> createState() => _WorkoutBeginnerState();
@@ -79,7 +79,7 @@ class _WorkoutBeginnerState extends State<WorkoutBeginner> {
                     ],
                     unselectedLabelColor: Colors.grey,
                     indicator: RectangularIndicator(
-                        color: appUISecondaryColor.withOpacity(0.5),
+                        color: appUISecondaryColor.withValues(alpha: 0.5),
                         bottomLeftRadius: 100,
                         bottomRightRadius: 100,
                         topLeftRadius: 100,

@@ -7,7 +7,7 @@ import 'package:gif/gif.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class WorkoutExtreme extends StatelessWidget {
-  const WorkoutExtreme({Key? key}) : super(key: key);
+  const WorkoutExtreme({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class WorkoutExtreme extends StatelessWidget {
                       ],
                       unselectedLabelColor: Colors.grey,
                       indicator: RectangularIndicator(
-                          color: appUISecondaryColor.withOpacity(0.5),
+                          color: appUISecondaryColor.withValues(alpha: 0.5),
                           bottomLeftRadius: 100,
                           bottomRightRadius: 100,
                           topLeftRadius: 100,

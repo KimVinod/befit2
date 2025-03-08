@@ -6,7 +6,7 @@ import 'intermediate/workout_intermediate_screen.dart';
 
 
 class Workout extends StatelessWidget {
-  const Workout({Key? key}) : super(key: key);
+  const Workout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class Workout extends StatelessWidget {
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutTips())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFfedffc).withOpacity(0.7),
+                            color: const Color(0xFFfedffc).withValues(alpha: 0.7),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -68,7 +68,7 @@ class Workout extends StatelessWidget {
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutBeginner())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFffeeb6).withOpacity(0.5),
+                            color: const Color(0xFFffeeb6).withValues(alpha: 0.5),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -90,7 +90,7 @@ class Workout extends StatelessWidget {
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutIntermediate())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFb5ffe5).withOpacity(0.55),
+                            color: const Color(0xFFb5ffe5).withValues(alpha: 0.55),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
@@ -112,7 +112,7 @@ class Workout extends StatelessWidget {
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutExtreme())),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFd1d4f3).withOpacity(0.55),
+                            color: const Color(0xFFd1d4f3).withValues(alpha: 0.55),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child:  Padding(
